@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Demo</title>
-  </head>
-  <body>
-    <h1>Recommended Books</h1>
+<?php
 
-    <?php
-      $books = [
-        "Do Androids Dream of Electric Sheep",
-        "The Langoliers",
-        "Project Hail Mary"
-      ];
-    ?>
-    <ul>
-      <?php foreach($books as $book) : ?>
-        <li><?= $book ?></li>
-      <?php endforeach;?>
-    </ul>
-  </body>
-</html>
+$books = [
+  [
+    'name' => 'Do Androids Dream of Electric Sheep',
+    'author' => 'Philip K. Dick',
+    'releaseYear' => 1968,
+    'purchaseUrl' => 'http://example.com'
+  ],
+  [
+    'name' => 'Project Hail Mary',
+    'author' => 'Andy Weir',
+    'releaseYear' => 2021,
+    'purchaseUrl' => 'http://example.com'
+  ],
+  [
+    'name' => 'The Martian',
+    'author' => 'Andy Weir',
+    'releaseYear' => 2011,
+    'purchaseUrl' => 'http://example.com'
+  ]
+];
+
+
+
+$filteredBooks = array_filter($books, function($book){
+  return $book['author'] === 'Andy Weir';
+});
+
+require "index.view.php";
